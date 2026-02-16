@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PageTurn - Discover Your Next Great Read</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar" id="navbar">
+        <div class="nav-container">
+            <div class="nav-logo">
+                <i class="fas fa-book-open"></i>
+                <span>PageTurn</span>
+            </div>
+            <ul class="nav-menu" id="navMenu">
+                <li><a href="#home" class="nav-link active" data-page="home">Home</a></li>
+                <li><a href="#books" class="nav-link" data-page="books">Books</a></li>
+                <li><a href="#categories" class="nav-link" data-page="categories">Categories</a></li>
+                <li><a href="#contact" class="nav-link" data-page="contact">Contact</a></li>
+            </ul>
+            <div class="nav-actions">
+                <button class="search-btn" id="searchToggle"><i class="fas fa-search"></i></button>
+                <button class="cart-btn" id="cartBtn" data-page="cart">
+                    <i class="fas fa-shopping-cart"></i>
+                    <span class="cart-badge" id="cartBadge">0</span>
+                </button>
+                <button class="mobile-menu-toggle" id="mobileMenuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Main Content Container -->
+    <main id="mainContent">
+        <!-- HOME PAGE -->
+        <section id="homePage" class="page active">
+            <!-- Hero Section -->
+            <section class="hero">
+                <div class="hero-content">
+                    <h1 class="hero-title">Discover Your Next Great Read</h1>
+                    <p class="hero-subtitle">Explore thousands of carefully curated titles across every genre imaginable. From timeless classics to contemporary bestsellers, your next literary adventure awaits.</p>
+                    <div class="hero-buttons">
+                        <button class="btn btn-primary" data-page="books">Browse Books</button>
+                        <button class="btn btn-secondary" data-page="categories">Explore Categories</button>
+                    </div>
+                </div>
+                <div class="hero-decoration">
+                    <div class="floating-book"></div>
+                    <div class="floating-book"></div>
+                    <div class="floating-book"></div>
+                </div>
+            </section>
+
+            <!-- Featured Books -->
+            <section class="section featured-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Featured Books</h2>
+                        <p class="section-subtitle">Handpicked selections from our editors</p>
+                    </div>
+                    <div class="books-grid" id="featuredBooks"></div>
+                </div>
+            </section>
+
+            <!-- Best Sellers -->
+            <section class="section bestsellers-section">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Best Sellers</h2>
+                        <p class="section-subtitle">Most loved by our readers</p>
+                    </div>
+                    <div class="books-grid" id="bestsellerBooks"></div>
+                </div>
+            </section>
+
+            <!-- Newsletter -->
+            <section class="newsletter-section">
+                <div class="container">
+                    <div class="newsletter-content">
+                        <h2 class="newsletter-title">Stay Updated</h2>
+                        <p class="newsletter-subtitle">Subscribe to our newsletter for exclusive deals, new releases, and reading recommendations</p>
+                        <form class="newsletter-form" id="newsletterForm">
+                            <input type="email" placeholder="Enter your email address" class="newsletter-input" required>
+                            <button type="submit" class="btn btn-primary">Subscribe</button>
+                        </form>
+                    </div>
+                </div>
+            </section>
+        </section>
+
+        <!-- BOOKS PAGE -->
+        <section id="booksPage" class="page">
+            <div class="page-header">
+                <div class="container">
+                    <h1 class="page-title">Our Collection</h1>
+                    <p class="page-subtitle">Browse through our extensive library of books</p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="books-controls">
+                    <div class="search-bar">
+                        <i class="fas fa-search"></i>
+                        <input type="text" id="bookSearch" placeholder="Search by title or author...">
+                    </div>
+                    
+                    <div class="filter-controls">
+                        <div class="category-filters" id="categoryFilters">
+                            <button class="filter-btn active" data-category="all">All</button>
+                            <button class="filter-btn" data-category="Fiction">Fiction</button>
+                            <button class="filter-btn" data-category="Non-Fiction">Non-Fiction</button>
+                            <button class="filter-btn" data-category="Psychology">Psychology</button>
+                            <button class="filter-btn" data-category="Science">Science</button>
+                            <button class="filter-btn" data-category="Technology">Technology</button>
+                            <button class="filter-btn" data-category="Fantasy">Fantasy</button>
+                            <button class="filter-btn" data-category="Romance">Romance</button>
+                            <button class="filter-btn" data-category="Mystery">Mystery</button>
+                            <button class="filter-btn" data-category="Self-Help">Self-Help</button>
+                            <button class="filter-btn" data-category="Philosophy">Philosophy</button>
+                        </div>
+                        
+                        <div class="sort-control">
+                            <select id="sortSelect" class="sort-select">
+                                <option value="default">Sort by</option>
+                                <option value="price-low">Price: Low to High</option>
+                                <option value="price-high">Price: High to Low</option>
+                                <option value="rating">Rating: High to Low</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="books-grid" id="allBooks"></div>
+            </div>
+        </section>
+
+        <!-- CATEGORIES PAGE -->
+        <section id="categoriesPage" class="page">
+            <div class="page-header">
+                <div class="container">
+                    <h1 class="page-title">Browse by Category</h1>
+                    <p class="page-subtitle">Discover books tailored to your interests</p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="categories-grid" id="categoriesGrid"></div>
+            </div>
+        </section>
+
+        <!-- CART PAGE -->
+        <section id="cartPage" class="page">
+            <div class="page-header">
+                <div class="container">
+                    <h1 class="page-title">Shopping Cart</h1>
+                    <p class="page-subtitle">Review your selected items</p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="cart-content" id="cartContent">
+                    <div class="cart-items" id="cartItems"></div>
+                    <div class="cart-summary">
+                        <h3>Order Summary</h3>
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span id="cartSubtotal">$0.00</span>
+                        </div>
+                        <div class="summary-row">
+                            <span>Shipping</span>
+                            <span class="free-shipping">Free</span>
+                        </div>
+                        <div class="summary-row total">
+                            <span>Total</span>
+                            <span id="cartTotal">$0.00</span>
+                        </div>
+                        <button class="btn btn-primary btn-full" id="checkoutBtn">Proceed to Checkout</button>
+                    </div>
+                </div>
+                <div class="empty-cart" id="emptyCart" style="display: none;">
+                    <i class="fas fa-shopping-cart"></i>
+                    <h3>Your cart is empty</h3>
+                    <p>Start adding books to your collection</p>
+                    <button class="btn btn-primary" data-page="books">Browse Books</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CHECKOUT CONFIRMATION PAGE -->
+        <section id="checkoutPage" class="page">
+            <div class="container">
+                <div class="confirmation-content">
+                    <div class="confirmation-icon">
+                        <i class="fas fa-check-circle"></i>
+                    </div>
+                    <h1 class="confirmation-title">Payment Successful!</h1>
+                    <p class="confirmation-message">Thank you for your order. Your books will be delivered soon.</p>
+                    <div class="order-summary" id="orderSummary"></div>
+                    <button class="btn btn-primary" data-page="home">Continue Shopping</button>
+                </div>
+            </div>
+        </section>
+
+        <!-- CONTACT PAGE -->
+        <section id="contactPage" class="page">
+            <div class="page-header">
+                <div class="container">
+                    <h1 class="page-title">Get In Touch</h1>
+                    <p class="page-subtitle">We'd love to hear from you</p>
+                </div>
+            </div>
+            
+            <div class="container">
+                <div class="contact-content">
+                    <div class="contact-form-container">
+                        <form class="contact-form" id="contactForm">
+                            <div class="form-group">
+                                <label for="contactName">Name</label>
+                                <input type="text" id="contactName" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactEmail">Email</label>
+                                <input type="email" id="contactEmail" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactSubject">Subject</label>
+                                <input type="text" id="contactSubject" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="contactMessage">Message</label>
+                                <textarea id="contactMessage" rows="6" required></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-full">Send Message</button>
+                        </form>
+                    </div>
+                    
+                    <div class="contact-info">
+                        <h3>Contact Information</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <h4>Email</h4>
+                                <p>hello@pageturn.store</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <h4>Phone</h4>
+                                <p>+1 (555) 123-4567</p>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Address</h4>
+                                <p>123 Book Street<br>Literary District<br>New York, NY 10001</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-col">
+                    <h3 class="footer-title">
+                        <i class="fas fa-book-open"></i>
+                        PageTurn
+                    </h3>
+                    <p class="footer-description">Your trusted companion in the world of books. Curating exceptional reading experiences since 2024.</p>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-linkedin"></i></a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h4>Quick Links</h4>
+                    <ul>
+                        <li><a href="#home" data-page="home">Home</a></li>
+                        <li><a href="#books" data-page="books">Books</a></li>
+                        <li><a href="#categories" data-page="categories">Categories</a></li>
+                        <li><a href="#contact" data-page="contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Categories</h4>
+                    <ul>
+                        <li><a href="#books" data-category="Fiction">Fiction</a></li>
+                        <li><a href="#books" data-category="Non-Fiction">Non-Fiction</a></li>
+                        <li><a href="#books" data-category="Psychology">Psychology</a></li>
+                        <li><a href="#books" data-category="Self-Help">Self-Help</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col">
+                    <h4>Contact</h4>
+                    <ul>
+                        <li><i class="fas fa-envelope"></i> hello@pageturn.store</li>
+                        <li><i class="fas fa-phone"></i> +1 (555) 123-4567</li>
+                        <li><i class="fas fa-map-marker-alt"></i> New York, NY 10001</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 PageTurn. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Book Preview Modal -->
+    <div class="modal" id="bookModal">
+        <div class="modal-overlay" id="modalOverlay"></div>
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">
+                <i class="fas fa-times"></i>
+            </button>
+            <div class="modal-body" id="modalBody"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
